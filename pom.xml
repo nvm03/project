@@ -15,7 +15,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.stas.telegram.Main</mainClass>
+            <mainClass>testbot.Main</mainClass>
           </manifest>
         </archive>
       </configuration>
