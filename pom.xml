@@ -3,17 +3,12 @@
   <groupId>com.stas.telegram</groupId>
   <artifactId>testbot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <build>
-  <plugins>
-    <plugin>    
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>1.10</source>
-            <target>1.10</target>
-        </configuration>
-    </plugin>
-</plugins>
-</build>
+  
+  <properties>
+    <maven.compiler.target>1.10</maven.compiler.target>
+    <maven.compiler.source>1.10</maven.compiler.source>
+</properties>
+
   <dependencies>
   	<dependency>
  		 <groupId>com.github.pengrad</groupId>
