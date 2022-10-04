@@ -1,1 +1,1 @@
-worker: java -Dserver.port=$PORT $JAVA_OPTS -cp target/classes:target/dependency/* -jar target/*.jar testbot.Main
+worker: java -Dserver.port=$PORT $JAVA_OPTS -cp target/classes:target/dependency/* testbot.Main
