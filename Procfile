@@ -1,1 +1,1 @@
-worker: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar com.stas.telegram.testbot.Main
+worker: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar testbot.Main
