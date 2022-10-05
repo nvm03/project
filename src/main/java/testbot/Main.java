@@ -1,26 +1,23 @@
 package testbot;
-
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import org.postgresql.util.PSQLException;
-
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -41,6 +38,7 @@ public class Main {
 		TelegramBot bot = new TelegramBot("5733003100:AAGp_H1K0BsThG29LN2BsZLcQ2WGrnKctGI");
 		bot.setUpdatesListener(updates -> {
 			TypedQuery<Contact> q = (TypedQuery<Contact>) entityManager.createNativeQuery("select * from contacts", Contact.class);
+			
 			for (Update update : updates) {
 				var user_id = update.message().from().id() + "";
 				var whitelist = readWhiteList("whitelist");
@@ -66,9 +64,10 @@ public class Main {
 			return UpdatesListener.CONFIRMED_UPDATES_ALL;
 		});
 	}
+	
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 	    
-	    URI dbUri = new URI(System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base"));
+	    URI dbUri = new URI(System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base?sslmode=require"));
 
 	    String username = dbUri.getUserInfo().split(":")[0];
 	    String password = dbUri.getUserInfo().split(":")[1];
