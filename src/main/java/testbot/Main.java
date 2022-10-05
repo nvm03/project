@@ -68,7 +68,7 @@ public class Main {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 	    
 	   
-	    String ConnectionString ="jdbc:postgresql://localhost:5432/Contacts_Base?sslmode=require";
+	    String ConnectionString ="jdbc:postgres://zotkvhnmjheghz:5b00730e1c6f7483c360ecf3665b9b1ca198794b80c2c2cabbd7b5b3f670faa9@ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/dcf6a77hkvnd97";
         String username = "postgres";
         String password = "Stas2002";
 
