@@ -3,6 +3,7 @@ package testbot;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,8 +67,14 @@ public class Main {
 		});
 	}
 	private static Connection getConnection() throws URISyntaxException, SQLException {
-	    String dbUrl = System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base");
-	    return DriverManager.getConnection(dbUrl);
+	    
+	    URI dbUri = new URI(System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base"));
+
+	    String username = dbUri.getUserInfo().split(":")[0];
+	    String password = dbUri.getUserInfo().split(":")[1];
+	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+
+	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	public static Map<String, String> byBufferedReader(String filePath) {
 		HashMap<String, String> map = new HashMap<>();
