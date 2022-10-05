@@ -67,13 +67,14 @@ public class Main {
 	
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 	    
-	    URI dbUri = new URI(System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"));
+	   
+	    String ConnectionString ="jdbc:postgresql://localhost:5432/Contacts_Base?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+        String username = "postgres";
+        String password = "Stas2002";
 
-	    String username = dbUri.getUserInfo().split(":")[0];
-	    String password = dbUri.getUserInfo().split(":")[1];
-	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        return DriverManager.getConnection(ConnectionString, username, password);
+	    
 
-	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	public static Map<String, String> byBufferedReader(String filePath) {
 		HashMap<String, String> map = new HashMap<>();
