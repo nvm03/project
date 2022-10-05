@@ -125,9 +125,9 @@ public class Main {
 	public static String test(String messageText, List<Contact> contacts) {
 		if (messageText.equals("/start")) {
 			return "privet";
-		} else if (messageText.startsWith("/find")) {
+		} else if (messageText.startsWith("/contacts")) {
 			if(contacts.size()==0) {
-				return "Database is empty";
+				return "Contacts base is empty";
 			}
 			StringBuilder text = new StringBuilder();
 			for(var contact : contacts) {
@@ -135,7 +135,7 @@ public class Main {
 			}
 			return text.toString();
 		} else {
-			return "text";
+			return "Command not found";
 		}
 
 	}
