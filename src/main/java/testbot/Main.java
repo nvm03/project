@@ -68,7 +68,7 @@ public class Main {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 	    
 	   
-	    String ConnectionString ="jdbc:postgresql://localhost:5432/Contacts_Base?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+	    String ConnectionString ="jdbc:postgresql://localhost:5432/Contacts_Base?sslmode=require";
         String username = "postgres";
         String password = "Stas2002";
 
