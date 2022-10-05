@@ -32,12 +32,7 @@ public class Main {
         Connection connection = getConnection();
         
         Statement stmt = connection.createStatement();
-		//EntityManagerFactory emf = null;
-//		emf = Persistence.createEntityManagerFactory("jbd-pu");
-//		final EntityManager entityManager =  emf.createEntityManager();
-//		EntityTransaction transaction = null;
-//		transaction = entityManager.getTransaction();
-//		transaction.begin();
+		
 		System.out.println("START");
 		TelegramBot bot = new TelegramBot("5733003100:AAGp_H1K0BsThG29LN2BsZLcQ2WGrnKctGI");
 		bot.setUpdatesListener(updates -> {
@@ -65,6 +60,7 @@ public class Main {
 				try{
 				while (q.next()) {
 					Contact c  = new Contact();
+					c.setPosition(q.getString("Position"));
 					c.setName(q.getString("Name"));
 					c.setPhone_Number(q.getString("Phone_Number"));
 					c.setTelegram_UserName(q.getString("Telegram_UserName"));
@@ -135,7 +131,7 @@ public class Main {
 			}
 			StringBuilder text = new StringBuilder();
 			for(var contact : contacts) {
-				text.append(contact.getName() + " - " + contact.getPhone_Number() + " - " + contact.getTelegram_UserName() + "\n");
+				text.append( contact.getPosition() + " - " + contact.getName() + " - " + contact.getPhone_Number() + " - " + contact.getTelegram_UserName() + "\n");
 			}
 			return text.toString();
 		} else {
