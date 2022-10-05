@@ -18,6 +18,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import org.postgresql.util.PSQLException;
+
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -64,7 +66,7 @@ public class Main {
 		});
 	}
 	private static Connection getConnection() throws URISyntaxException, SQLException {
-	    String dbUrl = System.getenv("Contacts_Base");
+	    String dbUrl = System.getenv("jdbc:postgresql://localhost:5432/Contacts_Base");
 	    return DriverManager.getConnection(dbUrl);
 	}
 	public static Map<String, String> byBufferedReader(String filePath) {
