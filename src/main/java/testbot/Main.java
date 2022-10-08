@@ -86,7 +86,8 @@ public class Main {
 	}
 	
 	private static Connection getConnection() throws URISyntaxException, SQLException {
-		String dbUrl = "jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/dcf6a77hkvnd97?sslmode=require&user=zotkvhnmjheghz&password=5b00730e1c6f7483c360ecf3665b9b1ca198794b80c2c2cabbd7b5b3f670faa9";
+		String dbUrl ="jdbc:postgresql://ec2-176-34-234-47.eu-west-1.compute.amazonaws.com\r\n"
+				+ ":5432/d7e1gv3evoq8h8?sslmode=require&user=rjawntleivocyn&password=9f83f6f88a836ff4a0a25cb355163245afe8930f01e642db77580cfbfe6a5341";
 	    return DriverManager.getConnection(dbUrl);
 	}
 	public static Map<String, String> byBufferedReader(String filePath) {
